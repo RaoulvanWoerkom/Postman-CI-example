@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Postman Continuous Integration example by RaoulvanWoerkom</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Postman Continuous Integration example</h1>
+        <p>This is an example on how to implement Postman calls into Continuous Integration (Travis CI).</p>
+
+        <p class="view"><a href="https://github.com/RaoulvanWoerkom/Postman-CI-example">View the Project on GitHub <small>RaoulvanWoerkom/Postman-CI-example</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/RaoulvanWoerkom/Postman-CI-example/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/RaoulvanWoerkom/Postman-CI-example/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/RaoulvanWoerkom/Postman-CI-example">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h3>
+<a id="description" class="anchor" href="#description" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Description</h3>
+
+<p>This is an example on how to implement Postman calls into Continuous Integration (Travis CI).</p>
+
+<p>"Newman is a command-line collection runner for Postman. It allows you to effortlessly run and test a Postman collection directly from the command-line. It is built with extensibility in mind so that you can easily integrate it with your continuous integration servers and build systems."</p>
+
+<hr>
+
+<p>Sample Builds can be found here:
+<a href="https://travis-ci.org/RaoulvanWoerkom/Postman-CI-example">https://travis-ci.org/RaoulvanWoerkom/Postman-CI-example</a></p>
+
+<hr>
+
+<p>Documentation on how to use Newman can be found here:
+<a href="https://www.getpostman.com/docs/newman_intro">https://www.getpostman.com/docs/newman_intro</a></p>
+
+<hr>
+
+<h2>
+<a id="sample-travisyml" class="anchor" href="#sample-travisyml" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Sample (.travis.yml)</h2>
+
+<pre><code># Speed up building using Cache
+cache:
+  directories:
+    - node_modules
+
+# Turn off notifications so you won't go crazy 
+notifications:
+  email: false
+
+sudo: required
+dist: trusty
+language: node_js
+# required node version &gt;=4
+node_js:
+  - "4.0.0"
+
+# Install newman
+before_install:
+  - npm install -g newman
+# Run Postman Collection
+script:
+  - newman -c mycollection.json
+</code></pre>
+
+<hr>
+
+<h3>
+<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+
+<p>Raoul van Woerkom (<a href="https://github.com/RaoulvanWoerkom" class="user-mention">@RaoulvanWoerkom</a>)</p>
+
+<h3>
+<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Support or Contact</h3>
+
+<p><a href="mailto:Raoulwoerkom@gmail.com">Raoulwoerkom@gmail.com</a></p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/RaoulvanWoerkom">RaoulvanWoerkom</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
