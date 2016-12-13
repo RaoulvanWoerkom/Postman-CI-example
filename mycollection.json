@@ -1,0 +1,73 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Postman Continuous Integration example",
+		"_postman_id": "6364677e-62b0-162f-bbd6-130a6566f297",
+		"description": "This is an example on how to implement Postman calls into Continuous Integration (Travis CI).",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET Example",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Body contains user-agent\"] = responseBody.has(\"user-agent\");",
+							"",
+							"tests[\"Response time is less than 500ms\"] = responseTime < 500;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "echo.getpostman.com/get",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": "Similar to httpbin.org/get. Return GET data."
+			},
+			"response": []
+		},
+		{
+			"name": "POST Example",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Response time is less than 1000ms\"] = responseTime < 1000;",
+							"",
+							"tests[\"Content-Type is present\"] = postman.getResponseHeader(\"Content-Type\");",
+							"",
+							"tests[\"Body matches string\"] = responseBody.has(\"echo.getpostman.com\");"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://echo.getpostman.com/post",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/html",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": "Returns a JSON with all the available API endpoints."
+			},
+			"response": []
+		}
+	]
+}

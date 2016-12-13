@@ -1,0 +1,22 @@
+# Speed up building using Cache
+cache:
+  directories:
+    - node_modules
+
+# Turn off notifications so you won't go crazy 
+notifications:
+  email: false
+
+sudo: required
+dist: trusty
+language: node_js
+# required node version >=4
+node_js:
+  - "4.0.0"
+
+# Install newman
+before_install:
+  - npm install -g newman
+# Run Postman Collection
+script:
+  - newman -c mycollection.json
